@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>052119940000091 - Ganendra Aby Bhamakerti</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background: -webkit-linear-gradient(left, rgb(60, 59, 110), rgb(213, 43, 30));
+            }
+        .languageform{
+            text-align: center;
+            margin-top:160px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .infobox {
+            margin-top: 40px;
+            width: 250px;
+        }
+        .submit {
+            text-align: center;
+            margin: 10px 20px 420px;
+        }
+        .result{
+            color: rgb(90, 255, 84);
+            padding-left: 10px;
+            margin: 10px 20px 10px 20px;
+        }
+        .error {
+            color: rgb(255, 0, 0);
+            padding-left: 10px;
+            margin: 10px 20px 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="languageform"> 
+        <h1 style="color: rgb(255, 255, 255);">Please select a language</h1>
+        <form>
+            <span class="label" style="color: rgb(255, 255, 255);">Language: </span>
+            <select id="language" class="infobox">
+                <option value="0">--Select a language--</option>
+                <option value="English">English</option>
+                <option value="Indonesian">Indonesian</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Arabic">Arabic</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Russian">Russian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Korean">Korean</option>
+                <option value="German">German</option>
+                <option value="Persian">Persian</option>
+            </select>
+            <p class="error alert alert-danger">No language selected. Please select a language to continue</p>
+            <p class="result"></p>
+            <script>
+                $(document).ready(function (){//menyatakan bahwa DOM sudah siap 
+                    $('.error').hide()//menyembunyikan kelas error;
+                    $('.submit').click(function (event){//mensubmit pilihan saat diklik
+                        var count = $('select option:selected').val();//mengambil nilai dari pilihan dan nilai disimpan sebagai nilai variabel
+                        if (count == 0){//jika nilai var count adalah 0, pilihan masih ada pada --Select a language--
+                            $('p.result').hide();//menyembunyikan kelas result
+                            $('.error').show();//menampilkan kelas error
+                        } else{//jika nilai var count bukan 0, pilihan yang dipilih bukan --Select a language--
+                            $('.error').hide();//menyembunyikan kelas error
+                            $('p.result').show();//menampilkan kelas result
+                            $('p.result').text('Selected language: '+$('select option:selected').text());//menampilkan kelas result dengan pilihan yang spesifik selain pilihan yang menampilkan kelas error
+                        }
+                        event.preventDefault();//menghentikan defaut action dari tombol submit
+                    });
+                });    
+            </script>
+            <input class="submit btn btn-success" type="submit" value="Submit">
+    </div>
+</body>
+
+</html>
